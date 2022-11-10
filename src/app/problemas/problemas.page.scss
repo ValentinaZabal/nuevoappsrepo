@@ -1,0 +1,47 @@
+.fondo{
+    background-color: #DFFFDF;
+    height: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+ion-toolbar{
+    height: 150px;
+}
+
+ion-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-left: -10%;
+    margin-top: 30px;
+}
+
+.accordation{
+    display: inline-block;
+    text-align: left;
+    margin: 2%;
+}
+
+.accordation:hover .accordation-content{
+    max-height: 495px;
+}
+
+.accordation-content{
+    transition: max-height 1s;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    max-height: 0;
+}
+
+.accordation-inner{
+    padding: 0 15px;
+}
+
+.accordation-toggle{
+    transition: 1s linear;
+    border: 1px solid rgba(225, 225, 225, 0.3);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    display: block;
+}
