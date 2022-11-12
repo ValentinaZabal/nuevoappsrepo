@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
+import { ElectricistasService } from './electricistas.service';
+
 
 @Component({
   selector: 'app-electricistas',
@@ -8,7 +10,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class ElectricistasPage implements OnInit {
 
-  constructor(private menuCtrl: MenuController) { 
+  constructor(private menuCtrl: MenuController, private electricistasService: ElectricistasService,
+    public alertController: AlertController) { 
 
   }
   onClick()
@@ -16,47 +19,16 @@ export class ElectricistasPage implements OnInit {
     this.menuCtrl.toggle();
   }
 
-  ngOnInit() {
+  electricistas = []
+  todosLosElectricistas = []
+
+  ngOnInit(){
+    this.getElectricistas()
   }
 
-  electricistas = [
-    {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'electricista',
-    logo: "./assets/img/persona1.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'electricista',
-    logo: "./assets/img/persona2.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'electricista',
-    logo: "./assets/img/persona3.jpg"
-  },
-  {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'electricista',
-    logo: "./assets/img/persona1.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'electricista',
-    logo: "./assets/img/persona2.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'electricista',
-    logo: "./assets/img/persona3.jpg"
-  },
-]
-
-
+  async getElectricistas() {
+    this.electricistas = await this.electricistasService.getElectricistas()
+    console.table(this.electricistas);
+    this.todosLosElectricistas = Array.from(this.electricistas)
+  }
 }

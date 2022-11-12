@@ -12,12 +12,12 @@
   <ion-card  *ngFor="let plomero of plomeros; let i = index">
     <ion-item>
       <ion-avatar slot="start">
-        <img src={{plomero.logo}} />
+        <img src={{plomero.foto}} />
       </ion-avatar>
       <ion-label>
         <ion-card-header>{{plomero.nombre}}</ion-card-header>
-        <ion-card-content><span>Rubro:</span> {{plomero.rubro}}</ion-card-content>
         <ion-card-content><span>Edad:</span> {{plomero.edad}}<span> años</span></ion-card-content>
+        <ion-card-content>{{plomero.email}}</ion-card-content>
       </ion-label>
       <ion-button slot="end">
         <a href="tel:{{plomero.telefono}}">Contactar</a>

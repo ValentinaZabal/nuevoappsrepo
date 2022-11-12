@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
+import { GasistasService } from './gasistas.service';
 
 @Component({
   selector: 'app-gasistas',
@@ -8,7 +9,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class GasistasPage implements OnInit {
 
-  constructor(private menuCtrl: MenuController) { 
+  constructor(private menuCtrl: MenuController, private gasistasService: GasistasService,
+    public alertController: AlertController) { 
 
   }
   onClick()
@@ -16,46 +18,15 @@ export class GasistasPage implements OnInit {
     this.menuCtrl.toggle();
   }
 
-  ngOnInit() {
+
+  gasistas = []
+
+  ngOnInit(){
+    this.getGasistas()
   }
 
-  gasistas = [
-    {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'gasista',
-    logo: "./assets/img/persona1.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'gasista',
-    logo: "./assets/img/persona2.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'gasista',
-    logo: "./assets/img/persona3.jpg"
-  },
-  {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'gasista',
-    logo: "./assets/img/persona1.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'gasista',
-    logo: "./assets/img/persona2.jpg"
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'gasista',
-    logo: "./assets/img/persona3.jpg"
-  },
-]
-
+  async getGasistas() {
+    this.gasistas = await this.gasistasService.getGasistas()
+    console.table(this.gasistas);
+  }
 }

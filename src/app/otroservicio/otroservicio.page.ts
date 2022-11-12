@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
+import { OtrosserviciosService } from './otrosservicios.service';
 
 @Component({
   selector: 'app-otroservicio',
@@ -8,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class OtroservicioPage implements OnInit {
 
-constructor(private menuCtrl: MenuController) { 
+constructor(private menuCtrl: MenuController, private  otrosseerviciosService:OtrosserviciosService, public alertController: AlertController) { 
 
   }
   onClick() 
@@ -16,53 +17,15 @@ constructor(private menuCtrl: MenuController) {
     this.menuCtrl.toggle();
   }
 
-  ngOnInit() {
+  otrosservicios = []
+
+  ngOnInit(){
+    this.getOtrosServicios()
   }
 
-  otrosservicios = [
-    {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'plomero',
-    logo: "./assets/img/persona1.jpg",
-    telefono: '+3464560100'
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'plomero',
-    logo: "./assets/img/persona2.jpg",
-    telefono: '+3464560100'
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'plomero',
-    logo: "./assets/img/persona3.jpg",
-    telefono: '+3464560100'
-  },
-  {
-    edad: 18,
-    nombre: "Jose Perez",
-    rubro:'plomero',
-    logo: "./assets/img/persona1.jpg",
-    telefono: '+3464560100'
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'plomero',
-    logo: "./assets/img/persona2.jpg",
-    telefono: '+3464560100'
-  },
-  {
-    edad: 18,
-    nombre: 'Jose Perez',
-    rubro:'plomero',
-    logo: "./assets/img/persona3.jpg",
-    telefono: '+3464560100'
+  async getOtrosServicios() {
+    this.otrosservicios = await this.otrosseerviciosService.getOtrosServicios()
+    console.table(this.otrosservicios);
   }
-]
-
 }
 
