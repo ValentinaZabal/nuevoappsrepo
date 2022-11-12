@@ -31,12 +31,11 @@ export class LoginPage implements OnInit {
   }
 
   async ingresar(){
-    var f = this.formularioLogin.value;
+    let f = this.formularioLogin.value;
 
-    var usuario = JSON.parse(localStorage.getItem('usuario'));
+    let usuario = JSON.parse(localStorage.getItem('usuario'));
 
-    if(usuario.nombre == f.nombre && usuario.password == f.password){
-      console.log('Ingresado');
+    if(usuario.usuario === f.usuario && usuario.password === f.password){
       localStorage.setItem('ingresado','true');
       this.navCtrl.navigateRoot('menu/inicio');
     }else{

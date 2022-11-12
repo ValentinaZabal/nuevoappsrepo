@@ -1,0 +1,27 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button (click)= "onClick()">
+      <ion-icon slot="start" name="menu" style="font-size: 26px"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+<p id="titulo">Otros servicios</p>´
+
+<ion-card  *ngFor="let otroservicio of otrosservicios; let i = index">
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src={{otroservicio.logo}} />
+    </ion-avatar>
+    <ion-label>
+      <ion-card-header>{{otroservicio.nombre}}</ion-card-header>
+      <ion-card-content><span>Rubro:</span> {{otroservicio.rubro}}</ion-card-content>
+      <ion-card-content><span>Edad:</span> {{otroservicio.edad}}<span> años</span></ion-card-content>
+    </ion-label>
+    <ion-button slot="end">
+      <a href="tel:{{otroservicio.telefono}}">Contactar</a>
+    </ion-button>
+  </ion-item>
+</ion-card>
+</ion-content>
