@@ -16,6 +16,8 @@ import { invalid } from 'moment';
 export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
+  myDate = Date.now();
+ 
   
   constructor(public fb: FormBuilder,
     public alertController: AlertController,

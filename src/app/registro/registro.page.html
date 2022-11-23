@@ -4,6 +4,7 @@
 
 <ion-content>
       <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()" id="formulario">
+        
         <div class="nombredeformulario"><p>Nombre</p>
           <ion-item>
             <ion-input formControlName="nombre" placeholder="Ingresa tu nombre"></ion-input>
@@ -30,12 +31,17 @@
           <span class="errormessage" *ngIf= "f['telefono'].getError('maxlength')!=null">El nombre de usuario es demasiado largo</span>
         </div>
 
-        <div class="nombredeformulario"><p>Fecha de nacimiento</p>
-          <ion-item>
-            <ion-input formControlName="fechadenacimiento" type="date"  id="cumpleanos" placeholder="dd/mm/aaaa"></ion-input>
-          </ion-item>
-        </div>
 
+        <span id="date">Fecha de Nacimiento</span>
+        <span><ion-datetime-button datetime="datetime" ></ion-datetime-button></span> 
+
+  
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime" presentation="date" max="{{ myDate | date: 'yyyy-MM-dd'}}"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+        
         <div class="nombredeformulario"><p>Usuario</p>
           <ion-item>
             <ion-input formControlName="usuario" placeholder="Crear el nombre de usuario"></ion-input>
@@ -52,7 +58,6 @@
 
         <div class="nombredeformulario"><p>Confirme tu contraseña</p>
           <ion-item>
-            <ion-datetime value="2022-04-21T00:00:00" max=(today)></ion-datetime>
             <ion-input type="password" formControlName="confirmacionPassword" placeholder="Vuelve a escribir tu contraseña" id="password2"></ion-input>
           </ion-item>
           <span class="errormessage" *ngIf= "f['confirmacionPassword'].getError('confirmarcontra')!=null">Las contraseñas deben coincidir</span>
