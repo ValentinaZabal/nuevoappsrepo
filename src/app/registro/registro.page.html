@@ -31,14 +31,12 @@
           <span class="errormessage" *ngIf= "f['telefono'].getError('maxlength')!=null">El nombre de usuario es demasiado largo</span>
         </div>
 
-
         <span id="date">Fecha de Nacimiento</span>
-        <span><ion-datetime-button datetime="datetime" ></ion-datetime-button></span> 
+        <span><ion-datetime-button datetime="datetime" ></ion-datetime-button></span>
 
-  
         <ion-modal [keepContentsMounted]="true">
           <ng-template>
-            <ion-datetime id="datetime" presentation="date" max="{{ myDate | date: 'yyyy-MM-dd'}}"></ion-datetime>
+            <ion-datetime id="datetime" formControlName="fechadenacimiento" presentation="date" max="{{ myDate | date: 'yyyy-MM-dd'}}"></ion-datetime>
           </ng-template>
         </ion-modal>
         

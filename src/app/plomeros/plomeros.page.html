@@ -18,10 +18,14 @@
         <ion-card-header>{{plomero.nombre}}</ion-card-header>
         <ion-card-content><span>Edad:</span> {{plomero.edad}}<span> años</span></ion-card-content>
         <ion-card-content>{{plomero.email}}</ion-card-content>
+        <ion-button slot="end">
+          <a href="tel:{{plomero.telefono}}">Contactar</a>
+        </ion-button>
       </ion-label>
-      <ion-button slot="end">
-        <a href="tel:{{plomero.telefono}}">Contactar</a>
-      </ion-button>
+      <ion-fab-button size="small" (click)="agregarFav()">
+        <ion-icon name="heart"></ion-icon>
+      </ion-fab-button>
+
     </ion-item>
   </ion-card>
 </ion-content>

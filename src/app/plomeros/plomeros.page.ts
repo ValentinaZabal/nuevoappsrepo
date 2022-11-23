@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, MenuController } from '@ionic/angular';
+import { AlertController, MenuController, ToastController } from '@ionic/angular';
 import { PlomerosService } from './plomeros.service';
 
 
@@ -11,7 +11,7 @@ import { PlomerosService } from './plomeros.service';
 export class PlomerosPage implements OnInit {
 
   constructor(private  plomerosService:PlomerosService, private menuCtrl: MenuController,
-    public alertController: AlertController) { 
+    public alertController: AlertController, private toastController: ToastController) { 
 
   }
   onClick() 
@@ -30,7 +30,14 @@ export class PlomerosPage implements OnInit {
     this.plomeros = await this.plomerosService.getPlomeros()
     console.table(this.plomeros);
     this.todosLosPlomeros = Array.from(this.plomeros)
+  }
 
+  async agregarFav(){
+    const toast = await this.toastController.create({
+      message:'Agregado a favorito exitosamente',
+      duration:1500,
+    });
+    await toast.present();
   }
 
 }
