@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
     let usuario = JSON.parse(localStorage.getItem('usuario'));
 
-    if(usuario.usuario === f.usuario && usuario.password === f.password){
+    if(usuario.usuario === f.nombredeusuario && usuario.password === f.password){
       localStorage.setItem('ingresado','true');
       this.navCtrl.navigateRoot('menu/inicio');
     }else{

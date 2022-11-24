@@ -28,7 +28,7 @@ export class RegistroPage implements OnInit {
       'nombre': new FormControl("", Validators.required),
       'apellido': new FormControl("", Validators.required),
       'email':new FormControl("",Validators.compose([ Validators.required, Validators.email ])),
-      'telefono':new FormControl("",Validators.compose([ Validators.required, Validators.minLength(7), Validators.maxLength(15)])),
+      'telefono':new FormControl("",Validators.compose([ Validators.required, Validators.minLength(10), Validators.maxLength(10)])),
       'fechadenacimiento':new FormControl("", Validators.required),
       'usuario': new FormControl("",Validators.compose([ Validators.required, Validators.minLength(6)])),
       'password': new FormControl("", Validators.compose([ Validators.required, Validators.minLength(6)])),
@@ -91,13 +91,13 @@ export class RegistroPage implements OnInit {
       email: f.email,
       telefono: f.telefono,
       fechadenacimiento: f.fechadenacimiento,
-      usuario: f.usuario,
+      nombredeusuario: f.usuario,
       password: f.password,
       terminosycondiciones: f.terminosycondiciones,
 
     }
 
-    //localStorage.setItem('usuario',JSON.stringify(usuario));
+    localStorage.setItem('usuario',JSON.stringify(usuario));
     
     this.registroService.register(usuario)
     this.navCtrl.navigateRoot('login');

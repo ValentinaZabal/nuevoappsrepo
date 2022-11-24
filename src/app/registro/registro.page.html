@@ -28,7 +28,7 @@
             <ion-input formControlName="telefono" type="text" pattern="[0-9]+" placeholder="Ingresa tu telefono"></ion-input>
           </ion-item>
           <span class="errormessage" *ngIf= "f['telefono'].getError('minlength')!=null">El numero de telefono es demasiado corto</span>
-          <span class="errormessage" *ngIf= "f['telefono'].getError('maxlength')!=null">El nombre de usuario es demasiado largo</span>
+          <span class="errormessage" *ngIf= "f['telefono'].getError('maxlength')!=null">El numero de telefono es demasiado largo</span>
         </div>
 
         <span id="date">Fecha de Nacimiento</span>

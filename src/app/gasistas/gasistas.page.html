@@ -18,10 +18,10 @@
       <ion-card-header>{{gasista.nombre}}</ion-card-header>
       <ion-card-content><span>Rubro:</span> {{gasista.rubro}}</ion-card-content>
       <ion-card-content><span>Edad:</span> {{gasista.edad}}<span> años</span></ion-card-content>
+      <ion-button slot="end">
+        <a href="tel:{{gasista.telefono}}">Contactar</a>
+      </ion-button>
     </ion-label>
-    <ion-button slot="end" [routerLink]="['/menu/reservas']">
-      Contactar
-    </ion-button>
   </ion-item>
 </ion-card>
 </ion-content>
