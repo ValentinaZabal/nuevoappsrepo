@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
 import { invalid } from 'moment';
+import { RegistroService } from './registro.service';
 
 @Component({
   selector: 'app-registro',
@@ -21,7 +22,8 @@ export class RegistroPage implements OnInit {
   
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    private registroService:RegistroService) {
     this.formularioRegistro = this.fb.group({
       'nombre': new FormControl("", Validators.required),
       'apellido': new FormControl("", Validators.required),
@@ -83,15 +85,22 @@ export class RegistroPage implements OnInit {
       return;
     }
 
-    var usuario = {
+    let usuario = {
+      nombre: f.nombre,
+      apellido: f.apellido,
+      email: f.email,
+      telefono: f.telefono,
+      fechadenacimiento: f.fechadenacimiento,
+      usuario: f.usuario,
       password: f.password,
-      usuario: f.usuario
+      terminosycondiciones: f.terminosycondiciones,
+
     }
 
-    localStorage.setItem('usuario',JSON.stringify(usuario));
-
+    //localStorage.setItem('usuario',JSON.stringify(usuario));
     
+    this.registroService.register(usuario)
     this.navCtrl.navigateRoot('login');
   }
-
+  
 }
